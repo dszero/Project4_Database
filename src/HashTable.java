@@ -3,11 +3,12 @@ public class HashTable {
 	
 	private int size;
 	private int tableSize;
+	private Handle[] hash;
 	
 	public HashTable(int tableSize)
 	{
 		this.tableSize = tableSize;
-		Handler[] hash = new Handler[tableSize];
+		hash = new Handle[tableSize];
 	}
 	
 	/**
@@ -36,6 +37,24 @@ public class HashTable {
 	  }
 
 	  return(Math.abs(sum) % M);
+	}
+	/**
+	 * check for the size of the handle
+	 */
+	public void checkCapacity()
+	{
+		if (size + 1 > tableSize / 2)
+		{
+			Handle[] temp = hash;
+			hash = new Handle[tableSize * 2];
+			tableSize = tableSize * 2;
+			rehash(temp);
+		}
+	}
+	
+	public void rehash(Handle[] temp)
+	{
+		
 	}
 
 }
